@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Screen Canvas</title>
+    <style>
+        /* Ensure that the body and HTML take up the full window */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        /* Make the canvas take up the full screen */
+        canvas {
+            display: block;  /* Removes scrollbars */
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="fullscreenCanvas"></canvas>
+    <script src="index.js"></script>
+</body>
+</html>
