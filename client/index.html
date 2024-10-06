@@ -3,26 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full-Screen Canvas</title>
-    <style>
-        /* Ensure that the body and HTML take up the full window */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        /* Make the canvas take up the full screen */
-        canvas {
-            display: block;  /* Removes scrollbars */
-            width: 100vw;
-            height: 100vh;
-        }
-    </style>
+    <title>WebSocket Host Configuration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <canvas id="fullscreenCanvas"></canvas>
-    <script src="index.js"></script>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Configure WebSocket Host and Port</h5>
+                        <form id="hostForm">
+                            <div class="mb-3">
+                                <label for="host" class="form-label">Host</label>
+                                <input type="text" class="form-control" id="host" placeholder="e.g., localhost">
+                            </div>
+                            <div class="mb-3">
+                                <label for="port" class="form-label">Port</label>
+                                <input type="number" class="form-control" id="port" placeholder="e.g., 5743" value="5743">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Connect</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('hostForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const host = document.getElementById('host').value;
+            const port = document.getElementById('port').value;
+            if (host && port) {
+                window.location.href = `controller.html?host=${encodeURIComponent(host)}&port=${encodeURIComponent(port)}`;
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

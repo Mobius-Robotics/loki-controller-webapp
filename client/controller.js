@@ -211,7 +211,8 @@
 
     const sliders = ["Elevator", "Claw", "ω"].map((label, idx) => new Slider(label, canvas.width / 2 + 150 + 80 * idx, 30, canvas.height - 30, idx == 2));
 
-    const webSocket = new WebSocket("ws://localhost:5743");
+    const urlParams = new URLSearchParams(window.location.search);
+    const webSocket = new WebSocket(`ws://${urlParams.get("host") || "localhost"}:${urlParams.get("port") || "5743"}`);
 
     function loop() {
         ctx.fillStyle = "#000";
