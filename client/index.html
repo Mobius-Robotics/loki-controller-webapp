@@ -20,11 +20,29 @@
                             </div>
                             <div class="mb-3">
                                 <label for="port" class="form-label">Port</label>
-                                <input type="number" class="form-control" id="port" placeholder="e.g., 5743" value="5743">
+                                <input type="number" class="form-control" id="port" value="5743" placeholder="e.g., 5743">
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Connect</button>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for validation errors -->
+    <div class="modal fade" id="validationModal" tabindex="-1" aria-labelledby="validationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="validationModalLabel">Validation Error</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Please enter a valid host and port before proceeding.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -37,6 +55,10 @@
             const port = document.getElementById('port').value;
             if (host && port) {
                 window.location.href = `controller.html?host=${encodeURIComponent(host)}&port=${encodeURIComponent(port)}`;
+            } else {
+                // Show validation modal if host or port is not provided
+                var validationModal = new bootstrap.Modal(document.getElementById('validationModal'));
+                validationModal.show();
             }
         });
     </script>
