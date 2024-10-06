@@ -70,7 +70,7 @@
     }
 
     ontouchstart(event) {
-      document.getElementById("fullscreenCanvas").requestFullscreen();
+      if (canvas.requestFullscreen) canvas.requestFullscreen();
       if (this.currentTouch !== null) return;
       const ourTouch = Array.from(event.changedTouches).find(
         (touch) =>
